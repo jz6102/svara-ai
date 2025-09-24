@@ -4,7 +4,7 @@ A full-stack task and project management application built for the SvaraAI Full 
 
 ## 🚀 Live Demo & Video
 
--   **Live Site:** **[svara-ai-task-manager.vercel.app](https://svara-ai-frontend-fjsjhs845-jaikanna-bs-projects.vercel.app/)**
+-   **Live Site:** **[svara-ai-task-manager](https://svara-ai-frontend-fjsjhs845-jaikanna-bs-projects.vercel.app/)**
 -   **Demo Video:** **[Watch the Walkthrough](https://drive.google.com/file/d/13rbNdIyYMT8HEH0OFizO04DrSabVVrcw/view?usp=sharing)**
 
 ![SvaraAI Task Manager Kanban Board](https://i.imgur.com/uEgs42f.png)
@@ -40,32 +40,54 @@ A full-stack task and project management application built for the SvaraAI Full 
 
 The project is organized as a monorepo with separate directories for the `frontend` and `backend`, ensuring a clear separation of concerns.
 
-### Backend Architecture
+## 🏗️ Project Root
+/svara-ai-assignment
+├── backend/                     # Backend (Node.js, Express, MongoDB)
+│   └── src/
+│       ├── controllers/         # Handles HTTP requests and responses
+│       ├── services/            # Core business logic (called by controllers)
+│       ├── models/              # Mongoose schemas (Users, Projects, Tasks)
+│       ├── routes/              # API route definitions
+│       ├── middlewares/         # Middleware (JWT verification, auth checks)
+│       └── config/              # Database connection & environment setup
+│
+├── frontend/                    # Frontend (Next.js 15, React, Tailwind)
+│   └── src/
+│       ├── app/                 # Next.js App Router, pages, and layouts
+│       ├── components/          # Reusable React components (Buttons, Modals,Cards)
+│       ├── context/             # Global state management (AuthContext)
+│       └── lib/                 # Helper functions (API service wrapper)
+│
+├── .gitignore                   # Git ignore file
+├── package.json                 # Root dependencies & scripts (if using workspaces)
+├── README.md                    # Project documentation
+└── LICENSE                      # Open-source license (MIT)
 
-The backend follows a modular, three-tier architecture to promote maintainability and scalability, adhering to SOLID principles.
+---
 
--   **Controllers:** Handle incoming HTTP requests and outgoing responses. They are responsible for the request/response cycle and input validation.
--   **Services:** Contain the core business logic. They are called by controllers and interact with the repository layer.
--   **Models:** Define the Mongoose schemas and data structures for the application (Users, Projects, Tasks).
+## 📂 Backend (Expanded)
 
-/backend/src/
-├── controllers/    # Handles HTTP requests and responses
-├── services/       # Contains business logic
-├── models/         # Mongoose schemas
-├── routes/         # API route definitions
-├── middlewares/    # Authentication middleware (JWT verification)
-└── config/         # Database connection setup
+The backend follows a modular, three-tier architecture to promote maintainability and scalability, adhering to SOLID principles. -   **Controllers:** Handle incoming HTTP requests and outgoing responses. They are responsible for the request/response cycle and input validation. -   **Services:** Contain the core business logic. They are called by controllers and interact with the repository layer. -   **Models:** Define the Mongoose schemas and data structures for the application (Users, Projects, Tasks).
 
+/backend
+└── src
+    ├── controllers/     # authController.js, projectController.js, taskController.js
+    ├── services/        # authService.js, projectService.js, taskService.js
+    ├── models/          # User.js, Project.js, Task.js (Mongoose schemas)
+    ├── routes/          # auth.routes.js, project.routes.js, task.routes.js
+    ├── middlewares/     # auth.middleware.js (JWT verification)
+    └── config/          # db.js, index.js, env.js
 
-### Frontend Architecture
+## 🎨 Frontend (Expanded)
 
-The frontend uses Next.js 15's App Router for file-based routing and organization. Reusable components and a global context for authentication promote DRY principles.
+The frontend uses Next.js 15's App Router for file-based routing and organization. Reusable components and a global context for authentication promote DRY principles. 
 
-/frontend/src/
-├── app/            # Next.js App Router, pages, and layouts
-├── components/     # Reusable React components (Buttons, Modals, Cards)
-├── context/        # Global state management (AuthContext)
-└── lib/            # Helper functions (API service wrapper)
+/frontend
+└── src
+    ├── app/             # layout.tsx, page.tsx, dashboard/, projects/, auth/
+    ├── components/      # Button.tsx, Modal.tsx, KanbanBoard/, TaskCard.tsx
+    ├── context/         # AuthContext.tsx, useAuth.ts
+    └── lib/             # api.ts (Axios wrapper), helpers.ts
 
 
 ---
