@@ -2,6 +2,8 @@ const express = require('express');
 const connectDB = require('./src/config/db');
 const cors = require('cors');
 require('dotenv').config();
+
+const app = express();
 const allowedOrigins = [
   'http://localhost:3000', 
   process.env.CLIENT_URL    
@@ -18,8 +20,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-const app = express();
-
 connectDB();
 
 // app.use(cors());
