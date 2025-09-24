@@ -10,6 +10,5 @@ exports.getProjects = async (userId) => {
 };
 
 exports.deleteProject = async (projectId, userId) => {
-  // We can add logic here to also delete associated tasks
   return await Project.findOneAndDelete({ _id: projectId, user: userId });
 };
